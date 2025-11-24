@@ -8,15 +8,33 @@ import Image from "next/image"
 export default function FloatingAgent() {
   const [isVisible, setIsVisible] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if screen is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Check on mount
+    checkMobile()
+
+    // Add resize listener
+    window.addEventListener('resize', checkMobile)
+
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 1500)
-    return () => clearTimeout(timer)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', checkMobile)
+    }
   }, [])
 
-  if (!isVisible) return null
+  // Don't render on mobile devices
+  if (isMobile || !isVisible) return null
+
 
   return (
     <>
