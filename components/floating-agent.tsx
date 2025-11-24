@@ -60,9 +60,9 @@ export default function FloatingAgent() {
                   e.stopPropagation()
                   setIsOpen(false)
                 }}
-                className="absolute -top-3 -right-3 bg-gray-500 text-white rounded-full p-1 shadow-md hover:bg-gray-600 z-50 transition-colors cursor-pointer"
+                className="absolute -top-3 -right-3 bg-white text-white rounded-full p-1 shadow-md hover:bg-gray-600 z-50 transition-colors cursor-pointer"
               >
-                <X size={16} />
+                <X size={16} style={{ color: 'var(--primary-color)' }} />
               </button>
 
               {/* MAIN BOX */}
