@@ -43,7 +43,7 @@ export default function FloatingAgent() {
         }
       `}</style>
 
-      <div className="fixed bottom-4 left-4 z-50 md:bottom-8 md:left-8 font-sans">
+      <div className="fixed bottom-4 left-4 z-50 md:bottom-8 md:left-8 font-sans hidden md:block">
         <AnimatePresence>
           {isOpen ? (
             <motion.div
