@@ -34,7 +34,7 @@ export function TrustStatsSection() {
                 {/* CAMBIO: Color azul eliminado, ahora usa tu color primario (naranja/rojo) */}
                 Over <span className="text-primary">20,000 fleets</span> trust
               </p>
-              <div className="mt-1 text-2xl font-black text-foreground">FINEZIT</div>
+              <div className="mt-1 text-2xl font-black text-foreground">Tailwind</div>
             </div>
           </div>
         </div>

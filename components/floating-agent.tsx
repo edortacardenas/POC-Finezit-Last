@@ -121,7 +121,7 @@ export default function FloatingAgent() {
                     <p className="text-gray-600 text-xs">Or we can chat. What are you trying to track?</p>
                   </div>
 
-                  <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide cursor-default mx-4">
+                  <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide cursor-default mx-5">
                     {["Car", "Truck", "Trailer"].map((item) => (
                       <button
                         key={item}

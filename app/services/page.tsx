@@ -1,5 +1,4 @@
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
+
 import { AnimatedCard } from "@/components/ui/animated-card"
 import { Button } from "@/components/ui/button"
 import { FileText, Calculator, Shield, BarChart3, Users, Headphones } from "lucide-react"
@@ -62,7 +61,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <Navbar />
       <main>
         {/* Hero */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
@@ -112,7 +110,6 @@ export default function ServicesPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

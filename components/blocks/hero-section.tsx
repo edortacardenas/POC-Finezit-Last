@@ -6,6 +6,9 @@ import { Check, MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function HeroSection() {
+  // ID del video extraído para usarlo en la playlist param
+  const videoId = "E5IF4DMrbDI"
+
   return (
     <section className="py-12 md:py-20 lg:py-24 overflow-x-hidden" style={{ backgroundColor: 'var(--light-background-color)' }}>
       <div className="container mx-auto px-4">
@@ -81,7 +84,7 @@ export function HeroSection() {
           </div>
 
           {/* Right Column: Video Embed & Floating Card */}
-          <div className="relative"> {/* Relative container to position elements */}
+          <div className="relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -93,9 +96,17 @@ export function HeroSection() {
 
                 <iframe
                   className="h-full w-full"
-                  src="https://www.youtube.com/embed/E5IF4DMrbDI"
+                  /* 
+                     CAMBIOS REALIZADOS EN EL SRC:
+                     1. playlist={videoId}: Requerido para que funcione el loop.
+                     2. loop=1: Activa el bucle.
+                     3. autoplay=1: Inicia automáticamente.
+                     4. mute=1: Obligatorio para autoplay en Chrome/Safari.
+                     5. controls=0: Oculta los controles para que parezca más un fondo/GIF (opcional).
+                     6. rel=0: Evita videos relacionados de otros canales.
+                  */
+                  src={`https://www.youtube.com/embed/${videoId}?playlist=${videoId}&loop=1&autoplay=1&mute=1&controls=0&rel=0&showinfo=0`}
                   title="GPS Tracking Video"
-                  // Modern permissions and referrer policy added
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen

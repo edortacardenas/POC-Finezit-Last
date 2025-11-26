@@ -1,7 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Plus_Jakarta_Sans } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+//import { Analytics } from "@vercel/analytics/next"
+import { Navbar } from "@/components/layout/navbar"
+import { Footer } from "@/components/layout/footer"
 
 import "./globals.css"
 
@@ -35,8 +37,10 @@ export default function RootLayout({
     // Changed lang="es" to lang="en"
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
       <body className="font-sans antialiased">
+        <Navbar />
         {children}
-        <Analytics />
+        <Footer />
+
       </body>
     </html>
   )

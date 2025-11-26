@@ -1,12 +1,9 @@
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
 import { AnimatedCard } from "@/components/ui/animated-card"
 import { Target, Eye, Award } from "lucide-react"
 
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
       <main>
         {/* Hero */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
@@ -113,7 +110,6 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

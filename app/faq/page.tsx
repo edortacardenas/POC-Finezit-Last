@@ -1,5 +1,4 @@
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -77,7 +76,6 @@ const faqCategories = [
 export default function FAQPage() {
   return (
     <>
-      <Navbar />
       <main>
         {/* Hero */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
@@ -116,7 +114,6 @@ export default function FAQPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

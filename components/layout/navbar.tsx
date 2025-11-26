@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Support" },
+  { href: "/dashboard", label: "Dashboard" },
 ]
 
 export function Navbar() {
@@ -55,7 +56,7 @@ export function Navbar() {
         {/* Mobile Menu */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="bg-transparent hover:bg-[var(--primary-color)] hover:text-white hover:border-[var(--accent3-color)]" >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Open menu</span>
             </Button>
@@ -71,7 +72,7 @@ export function Navbar() {
                 </Link>
               </SheetTitle>
             </SheetHeader>
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-8 ml-4 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -84,7 +85,7 @@ export function Navbar() {
               ))}
               <div className="mt-4 flex flex-col gap-2 border-t pt-4">
                 <Link href="/login" onClick={() => setIsOpen(false)}>
-                  <Button variant="outline" className="w-full bg-transparent hover:bg-[var(--accent3-color)] hover:text-white hover:border-[var(--accent3-color)]">
+                  <Button variant="outline" className="w-full bg-transparent hover:bg-[var(--primary-color)] hover:text-white hover:border-[var(--accent3-color)]">
                     Log In
                   </Button>
                 </Link>

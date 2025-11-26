@@ -1,7 +1,5 @@
 "use client"
 
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,7 +10,6 @@ import { Mail, Phone, MapPin } from "lucide-react"
 export default function ContactPage() {
   return (
     <>
-      <Navbar />
       <main>
         {/* Hero */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
@@ -114,7 +111,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

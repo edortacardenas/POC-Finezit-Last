@@ -1,5 +1,4 @@
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
+
 import { PricingTable } from "@/components/blocks/pricing-table"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
@@ -28,7 +27,6 @@ const faqs = [
 export default function PricingPage() {
   return (
     <>
-      <Navbar />
       <main>
         {/* Hero */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
@@ -64,7 +62,6 @@ export default function PricingPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }
