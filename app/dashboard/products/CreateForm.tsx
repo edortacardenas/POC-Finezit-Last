@@ -57,7 +57,7 @@ export function CreateForm() {
                             <input
                                 name="name"
                                 type="text"
-                                placeholder="Ej: Licencia Anual Premium"
+                                placeholder="Ej: Bouncie GPS Tracker"
                                 className="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                 required
                                 suppressHydrationWarning={true}
