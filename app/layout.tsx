@@ -1,13 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Plus_Jakarta_Sans } from "next/font/google"
-//import { Analytics } from "@vercel/analytics/next"
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
-
 import "./globals.css"
 
-// Changed fonts to Inter and Plus Jakarta Sans for Finezit branding
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -20,12 +15,9 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 })
 
-// Updated metadata for Finezit POC
 export const metadata: Metadata = {
   title: "Finezit - Tax and Accounting Solutions",
-  description:
-    "Comprehensive tax and accounting management platform for entrepreneurs and businesses. Cloud-based invoicing, accounting, and tax compliance.",
-
+  description: "Comprehensive tax and accounting management platform...",
 }
 
 export default function RootLayout({
@@ -34,13 +26,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    // Changed lang="es" to lang="en"
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
       <body className="font-sans antialiased">
-        <Navbar />
+        {/* AQUI YA NO HAY NAVBAR NI FOOTER, SOLO CHILDREN */}
         {children}
-        <Footer />
-
       </body>
     </html>
   )
