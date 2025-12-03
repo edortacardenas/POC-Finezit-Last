@@ -14,6 +14,7 @@ const navLinks = [
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Support" },
   { href: "/dashboard", label: "Dashboard" },
+  { href: "/store", label: "Store" },
 ]
 
 export function Navbar() {

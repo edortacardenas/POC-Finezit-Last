@@ -35,7 +35,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
             <div className="max-w-6xl mx-auto">
 
                 {/* Back button */}
-                <Link href="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-black mb-8 transition-colors">
+                <Link href="/store" className="inline-flex items-center gap-2 text-gray-500 hover:text-black mb-8 transition-colors">
                     <ArrowLeft className="w-4 h-4" />
                     Back to store
                 </Link>
