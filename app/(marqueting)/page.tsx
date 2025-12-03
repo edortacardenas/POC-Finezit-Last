@@ -29,7 +29,7 @@ async function getProducts() {
   }`;
 
   // Cache de 60 segundos para mantener la web rápida
-  return client.fetch(query, {}, { next: { revalidate: 60 } });
+  return client.fetch(query, {}, { next: { revalidate: 0 } });
 }
 
 // 2. Convertimos el componente a async
