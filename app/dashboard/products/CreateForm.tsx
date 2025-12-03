@@ -21,24 +21,24 @@ export function CreateForm() {
     const [state, formAction, isPending] = useActionState(createProduct, initialState);
     const formRef = useRef<HTMLFormElement>(null);
 
-    // Limpiar formulario al tener éxito
+    // Clear form on success
     useEffect(() => {
         if (state.success && formRef.current) {
             formRef.current.reset();
-            // Opcional: Podrías usar un Toast aquí en lugar de alert
+            // Optional: You could use a Toast here instead of alert
             alert(state.message);
         }
     }, [state.success, state.message]);
 
     return (
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            {/* Header del Formulario */}
+            {/* Form Header */}
             <div className="bg-slate-50 px-6 py-4 border-b border-slate-100">
                 <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
                     <Package className="w-5 h-5 text-blue-600" />
-                    Agregar Nuevo Producto
+                    Add New Product
                 </h2>
-                <p className="text-xs text-slate-500 mt-1">Completa la información para publicar en la tienda.</p>
+                <p className="text-xs text-slate-500 mt-1">Complete the information to publish to the store.</p>
             </div>
 
             <div className="p-6">
@@ -49,24 +49,24 @@ export function CreateForm() {
                     suppressHydrationWarning={true}
                 >
 
-                    {/* Fila 1: Nombre y Precio */}
+                    {/* Row 1: Name and Price */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Nombre */}
+                        {/* Name */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Nombre del Producto <span className="text-red-500">*</span></label>
+                            <label className="text-sm font-medium text-slate-700">Product Name <span className="text-red-500">*</span></label>
                             <input
                                 name="name"
                                 type="text"
-                                placeholder="Ej: Bouncie GPS Tracker"
+                                placeholder="Ex: Bouncie GPS Tracker"
                                 className="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                 required
                                 suppressHydrationWarning={true}
                             />
                         </div>
 
-                        {/* Precio */}
+                        {/* Price */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-700">Precio <span className="text-red-500">*</span></label>
+                            <label className="text-sm font-medium text-slate-700">Price <span className="text-red-500">*</span></label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <DollarSign className="h-4 w-4 text-slate-400" />
@@ -84,9 +84,9 @@ export function CreateForm() {
                         </div>
                     </div>
 
-                    {/* Sección de Imagen (Estilo Drag & Drop visual) */}
+                    {/* Image Section (Visual Drag & Drop Style) */}
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-700">Imagen del Producto</label>
+                        <label className="text-sm font-medium text-slate-700">Product Image</label>
                         <div className="border-2 border-dashed border-slate-300 rounded-lg p-6 bg-slate-50 hover:bg-slate-100 transition-colors">
                             <div className="flex flex-col items-center justify-center gap-3 text-center">
                                 <div className="p-3 bg-white rounded-full shadow-sm">
@@ -94,13 +94,13 @@ export function CreateForm() {
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-sm font-medium text-slate-700">
-                                        Sube una imagen
+                                        Upload an image
                                     </p>
                                     <p className="text-xs text-slate-500">
-                                        JPG, PNG o WEBP (Max 10MB)
+                                        JPG, PNG or WEBP (Max 10MB)
                                     </p>
                                 </div>
-                                {/* Input File Real pero estilizado */}
+                                {/* Real but stylized Input File */}
                                 <input
                                     name="image"
                                     type="file"
@@ -116,12 +116,12 @@ export function CreateForm() {
                                 />
                             </div>
 
-                            {/* Alt Text anidado aquí para contexto */}
+                            {/* Alt Text nested here for context */}
                             <div className="mt-4 pt-4 border-t border-slate-200">
                                 <input
                                     name="alt"
                                     type="text"
-                                    placeholder="Descripción de la imagen (Alt Text para SEO)"
+                                    placeholder="Image description (Alt Text for SEO)"
                                     className="w-full p-2 bg-white border border-slate-300 rounded text-xs text-slate-600 focus:border-blue-500 outline-none"
                                     suppressHydrationWarning={true}
                                 />
@@ -129,9 +129,9 @@ export function CreateForm() {
                         </div>
                     </div>
 
-                    {/* URL de Compra */}
+                    {/* Purchase URL */}
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-700">Enlace de Pago (Stripe/PayPal)</label>
+                        <label className="text-sm font-medium text-slate-700">Payment Link (Stripe/PayPal)</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <LinkIcon className="h-4 w-4 text-slate-400" />
@@ -144,30 +144,30 @@ export function CreateForm() {
                                 suppressHydrationWarning={true}
                             />
                         </div>
-                        <p className="text-xs text-slate-500">El cliente será redirigido a esta URL al hacer clic en "Comprar".</p>
+                        <p className="text-xs text-slate-500">The customer will be redirected to this URL when clicking "Buy".</p>
                     </div>
 
-                    {/* Descripción */}
+                    {/* Description */}
                     <div className="space-y-2">
                         <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-                            <FileText className="w-4 h-4 text-slate-400" /> Descripción
+                            <FileText className="w-4 h-4 text-slate-400" /> Description
                         </label>
                         <textarea
                             name="description"
-                            placeholder="Describe las características principales del producto..."
+                            placeholder="Describe the main features of the product..."
                             className="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all min-h-[100px]"
                             suppressHydrationWarning={true}
                         />
                     </div>
 
-                    {/* Mensaje de Error */}
+                    {/* Error Message */}
                     {!state.success && state.message && (
                         <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm font-medium text-center animate-in fade-in slide-in-from-top-2">
                             {state.message}
                         </div>
                     )}
 
-                    {/* Botón de Submit */}
+                    {/* Submit Button */}
                     <div className="pt-2">
                         <button
                             type="submit"
@@ -181,10 +181,10 @@ export function CreateForm() {
                             {isPending ? (
                                 <>
                                     <Loader2 className="w-5 h-5 animate-spin" />
-                                    Guardando...
+                                    Saving...
                                 </>
                             ) : (
-                                "Publicar Producto"
+                                "Publish Product"
                             )}
                         </button>
                     </div>

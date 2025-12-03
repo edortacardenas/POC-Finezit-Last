@@ -4,9 +4,9 @@ import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ShieldCheck, Truck } from "lucide-react"; // Iconos opcionales
+import { ArrowLeft, ShieldCheck, Truck } from "lucide-react"; // Optional icons
 
-// 1. Obtener un solo producto basado en el slug de la URL
+// 1. Get a single product based on the URL slug
 async function getProduct(slug: string) {
     const query = `*[_type == "product" && slug.current == $slug][0] {
     _id,
@@ -20,29 +20,29 @@ async function getProduct(slug: string) {
     return client.fetch(query, { slug });
 }
 
-// 2. Componente de la página
+// 2. Page component
 export default async function ProductPage({ params }: { params: { slug: string } }) {
-    // En Next.js 15 params es una promesa, pero en versiones anteriores es directo. 
+    // In Next.js 15 params is a promise, but in previous versions it is direct. 
     const { slug } = await params;
     const product = await getProduct(slug);
 
     if (!product) {
-        return notFound(); // Muestra página 404 si el slug no existe
+        return notFound(); // Shows 404 page if slug does not exist
     }
 
     return (
         <div className="min-h-screen bg-white py-12 px-6">
             <div className="max-w-6xl mx-auto">
 
-                {/* Botón volver */}
+                {/* Back button */}
                 <Link href="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-black mb-8 transition-colors">
                     <ArrowLeft className="w-4 h-4" />
-                    Volver a la tienda
+                    Back to store
                 </Link>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-                    {/* --- COLUMNA IZQUIERDA: IMAGEN --- */}
+                    {/* --- LEFT COLUMN: IMAGE --- */}
                     <div className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-lg border">
                         {product.image ? (
                             <Image
@@ -50,14 +50,14 @@ export default async function ProductPage({ params }: { params: { slug: string }
                                 alt={product.name}
                                 fill
                                 className="object-cover"
-                                priority // Carga esta imagen con prioridad por ser la principal
+                                priority // Load this image with priority because it's the main one
                             />
                         ) : (
-                            <div className="flex h-full items-center justify-center text-gray-400">Sin imagen</div>
+                            <div className="flex h-full items-center justify-center text-gray-400">No image</div>
                         )}
                     </div>
 
-                    {/* --- COLUMNA DERECHA: INFO Y COMPRA --- */}
+                    {/* --- RIGHT COLUMN: INFO AND BUY --- */}
                     <div className="flex flex-col gap-6 pt-4">
                         <div>
                             <h1 className="text-4xl font-bold text-gray-900 mb-2">{product.name}</h1>
@@ -66,38 +66,38 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
                         <div className="border-t border-b py-6">
                             <p className="text-gray-600 leading-relaxed">
-                                {product.description || "Sin descripción disponible para este producto."}
+                                {product.description || "No description available for this product."}
                             </p>
                         </div>
 
-                        {/* BOTÓN DE COMPRA - Aquí usamos el buyUrl */}
+                        {/* BUY BUTTON - Here we use the buyUrl */}
                         <div className="flex flex-col gap-3">
                             {product.buyUrl ? (
                                 <a
                                     href={product.buyUrl}
-                                    target="_blank" // Abre en nueva pestaña (Stripe)
+                                    target="_blank" // Opens in new tab (Stripe)
                                     rel="noopener noreferrer"
                                     className="w-full bg-black text-white text-center py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition-transform active:scale-95"
                                 >
-                                    Comprar Ahora
+                                    Buy Now
                                 </a>
                             ) : (
                                 <button disabled className="w-full bg-gray-300 text-gray-500 py-4 rounded-full font-bold cursor-not-allowed">
-                                    No disponible para compra
+                                    Not available for purchase
                                 </button>
                             )}
 
                         </div>
 
-                        {/* Garantías (Decorativo) */}
+                        {/* Guarantees (Decorative) */}
                         <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mt-4">
                             <div className="flex items-center gap-2">
                                 <ShieldCheck className="w-5 h-5 text-green-600" />
-                                <span>Pago Seguro</span>
+                                <span>Secure Payment</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Truck className="w-5 h-5 text-blue-600" />
-                                <span>Entrega Inmediata</span>
+                                <span>Instant Delivery</span>
                             </div>
                         </div>
 

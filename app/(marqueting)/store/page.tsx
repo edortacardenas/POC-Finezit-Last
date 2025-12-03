@@ -1,16 +1,14 @@
-
-
 import FloatingAgent from "@/components/floating-agent"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShoppingBag, Search } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
-// --- IMPORTS DE SANITY ---
+// --- SANITY IMPORTS ---
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 
-// 1. Query para traer TODOS los productos (sin límite)
+// 1. Query to fetch ALL products (no limit)
 async function getAllProducts() {
     const query = `*[_type == "product"] | order(_createdAt desc) {
     _id,
@@ -21,7 +19,7 @@ async function getAllProducts() {
     "slug": slug.current
   }`;
 
-    // Revalidamos cada 0 segundos (siempre fresco) o 60 si prefieres caché
+    // Revalidate every 0 seconds (always fresh) or 60 if you prefer cache
     return client.fetch(query, {}, { next: { revalidate: 0 } });
 }
 
@@ -32,7 +30,7 @@ export default async function StorePage() {
         <>
             <main className="min-h-screen bg-background">
 
-                {/* --- STORE HEADER (Estilo Hero simplificado) --- */}
+                {/* --- STORE HEADER (Simplified Hero Style) --- */}
                 <section className="bg-muted/30 py-20 border-b">
                     <div className="container mx-auto px-4 text-center">
                         <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl tracking-tight">
@@ -42,7 +40,7 @@ export default async function StorePage() {
                             Explore all our accounting solutions, software licenses, and services tailored for your business growth.
                         </p>
 
-                        {/* Buscador Visual (Decorativo por ahora) */}
+                        {/* Visual Search (Decorative for now) */}
                         <div className="mx-auto max-w-md relative">
                             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                                 <Search className="h-5 w-5 text-muted-foreground" />
@@ -56,7 +54,7 @@ export default async function StorePage() {
                     </div>
                 </section>
 
-                {/* --- GRID DE PRODUCTOS --- */}
+                {/* --- PRODUCT GRID --- */}
                 <section className="py-16">
                     <div className="container mx-auto px-4">
 
@@ -68,7 +66,7 @@ export default async function StorePage() {
                                         href={`/store/product/${product.slug}`}
                                         className="group relative flex flex-col overflow-hidden rounded-2xl border bg-background transition-all hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        {/* Imagen del Producto */}
+                                        {/* Product Image */}
                                         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                                             {product.image ? (
                                                 <Image
@@ -83,16 +81,16 @@ export default async function StorePage() {
                                                 </div>
                                             )}
 
-                                            {/* Badge de Precio Flotante */}
+                                            {/* Floating Price Badge */}
                                             <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold shadow-sm border">
                                                 ${product.price}
                                             </div>
 
-                                            {/* Overlay al hover */}
+                                            {/* Overlay on hover */}
                                             <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5" />
                                         </div>
 
-                                        {/* Contenido */}
+                                        {/* Content */}
                                         <div className="flex flex-1 flex-col p-6">
                                             <div className="mb-2">
                                                 <h3 className="font-bold text-xl line-clamp-1 group-hover:text-primary transition-colors">
@@ -112,7 +110,7 @@ export default async function StorePage() {
                                 ))}
                             </div>
                         ) : (
-                            // Estado Vacio
+                            // Empty State
                             <div className="text-center py-20">
                                 <ShoppingBag className="h-16 w-16 mx-auto text-muted-foreground mb-4 opacity-50" />
                                 <h3 className="text-2xl font-bold text-gray-800">No products found</h3>
@@ -122,7 +120,7 @@ export default async function StorePage() {
                     </div>
                 </section>
 
-                {/* --- CTA FINAL (Igual al Home para consistencia) --- */}
+                {/* --- FINAL CTA (Same as Home for consistency) --- */}
                 <section className="bg-primary py-20 text-primary-foreground">
                     <div className="container mx-auto px-4 text-center">
                         <h2 className="mb-4 text-3xl font-bold md:text-4xl">Can't find what you're looking for?</h2>
